@@ -55,7 +55,7 @@ namespace serverChat
                 string data = "#updatechat&";
                 int countMessages = Chat.Count;
                 if (countMessages <= 0) return string.Empty;
-                for (int i = 0; i < countMessages; i++)
+                for (int i = countMessages-1; i < countMessages; i++)
                 {
                     data += String.Format("{0}~{1}|", Chat[i].userName, Chat[i].data);
                 }

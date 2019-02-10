@@ -56,6 +56,7 @@ namespace serverChat
             {
                 _userName = data.Split('&')[1];
                 UpdateChat();
+                UpdateOnline();
                 return;
             }
             if (data.Contains("#newmsg"))
@@ -75,6 +76,20 @@ namespace serverChat
         {
             Send(ChatController.GetChat());
         }
+        public void UpdateOnline()
+        {
+            List<string> vs = new List<string>();
+            foreach(Client client in Server.Clients)
+            {
+                vs.Add(client.UserName);
+            }
+            var str = "#updateonline&" + string.Join("|", vs);
+            for (int i = 0; i < Server.Clients.Count; i++)
+            {
+               Server.Clients[i].Send(str);
+            }
+        }
+
         public void Send(string command)
         {
             try

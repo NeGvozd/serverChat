@@ -28,6 +28,15 @@ namespace serverChat
                 client.End();
                 Clients.Remove(client);
                 Console.WriteLine("User {0} has been disconnected.", client.UserName);
+                try
+                {
+                    int countUsers = Clients.Count;
+                    for (int i = 0; i < countUsers; i++)
+                    {
+                        Clients[i].UpdateOnline();
+                    }
+                }
+                catch (Exception exp) { Console.WriteLine("Error with updateOnline: {0}.", exp.Message); }
             }
             catch (Exception exp) { Console.WriteLine("Error with endClient: {0}.",exp.Message); }
         }
