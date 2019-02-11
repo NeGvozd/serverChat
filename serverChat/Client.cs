@@ -51,7 +51,7 @@ namespace serverChat
             catch (Exception exp) { Console.WriteLine("Error with end: {0}.",exp.Message); }
         }
         private void handleCommand(string data)
-        {
+        {//в зависимости от тега в сообщении выполняем действия
             if (data.Contains("#setname"))
             {
                 _userName = data.Split('&')[1];

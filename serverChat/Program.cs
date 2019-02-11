@@ -14,7 +14,7 @@ namespace serverChat
         private const int _serverPort = 9933;
         private static Thread _serverThread;
         static void Main(string[] args)
-        {
+        { //запуск сервера 
             _serverThread = new Thread(startServer);
             _serverThread.IsBackground = true;
             _serverThread.Start();
