@@ -55,7 +55,7 @@ namespace serverChat
             if (data.Contains("#setname"))
             {
                 _userName = data.Split('&')[1];
-                UpdateChat();
+                //UpdateChat();
                 UpdateOnline();
                 return;
             }
